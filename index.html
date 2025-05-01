@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Sari Kulit Manggis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- FORM LOGIN -->
+  <div class="container" id="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="login-error" class="error"></p>
+  </div>
+
+  <!-- HALAMAN UTAMA -->
+  <div class="container hidden" id="main-container">
+    <nav>
+      <button onclick="showPage('profil')">Profil</button>
+      <button onclick="showPage('komposisi')">Komposisi</button>
+      <button onclick="showPage('manfaat')">Manfaat</button>
+    </nav>
+
+    <div id="content">
+      <div id="profil" class="page">
+        <h2>Profil Obat: Sidomuncul Sari Kulit Manggis</h2>
+        <img src="kulit manggis.jpg" alt="Sari Kulit Manggis" class="product-img" width="280">
+        <p>Sari Kulit Manggis Sidomuncul adalah suplemen kesehatan herbal yang dibuat dari ekstrak kulit buah manggis (Garcinia mangostana). 
+          Produk ini diformulasikan untuk membantu memelihara daya tahan tubuh dan kesehatan secara umum. Kulit manggis dikenal mengandung senyawa xanthone, antioksidan kuat yang memiliki berbagai manfaat kesehatan, termasuk antiinflamasi, antikanker, dan antimikroba.
+        </p>
+      </div>
+
+      <div id="komposisi" class="page hidden">
+        <h2>Komposisi</h2>
+        <ul>
+          <li>Ekstrak kulit manggis (Garcinia mangostana) 400 mg, setara dengan 5 g bahan kering</li>
+          <li>Vitamin C</li>
+          <li>Ekstrak herbal pendukung</li>
+        </ul>
+      </div>
+
+      <div id="manfaat" class="page hidden">
+        <h2>Manfaat</h2>
+        <ul>
+          <li>Meningkatkan daya tahan tubuh</li>
+          <li>Antioksidan tinggi</li>
+          <li>Membantu menjaga kesehatan sel tubuh</li>
+        </ul>
+        <h2>Aturan Minum</h2>
+        <ul>
+          <li>3 x 1–2 kapsul sehari. Diminum sesudah makan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT DI DALAM HTML -->
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      // Mengizinkan username dan password apa pun
+      if (username && password) {
+        document.getElementById("login-container").classList.add("hidden");
+        document.getElementById("main-container").classList.remove("hidden");
+        showPage('profil');
+      } else {
+        document.getElementById("login-error").innerText = "Masukkan username dan password!";
+      }
+    }
+
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => {
+        page.classList.add('hidden');
+        page.classList.remove('active');
+      });
+
+      const activePage = document.getElementById(pageId);
+      activePage.classList.remove('hidden');
+      activePage.classList.add('active');
+    }
+  </script>
+</body>
+</html>
